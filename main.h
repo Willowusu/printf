@@ -8,17 +8,9 @@
 #include <unistd.h>
 
 /**
- * _putchar - writes the character c to stdout
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * struct format - match te format specifiers for printf
+ * @specifier: type
  */
-
-/**
-* struct format - match te format specifiers for printf
-*@specifier: type
-*/
 
 typedef struct format
 {
@@ -31,7 +23,6 @@ int _putchar(char c);
 int _printf(const char *format, ...);
 int _strlen(char *s);
 int printf_int(va_list args);
-int printf_dec(va_list args);
-
+int _pow_recursion(int x, int y);
 
 #endif
