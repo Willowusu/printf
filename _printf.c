@@ -12,7 +12,11 @@ int _printf(const char *const format, ...)
     format_specifier conversion_specifier[] = {
         {"%s", printf_string},
         {"%i", printf_int},
-        {"%d", printf_int}};
+        {"%d", printf_int},
+        {"%b", printf_binary},
+        {"%u", printf_unsigned},
+		{"%o", printf_oct}, {"%x", printf_hexa}, {"%X", printf_HEX},
+        };
 
     va_list args;
     int i = 0, len = 0, j = 0;
