@@ -11,7 +11,9 @@
 int _printf(const char * const format, ...)
 {
  format_specifier f[] = {
-    {"%s", printf_string}
+    {"%s", printf_string},
+    {"%i", printf_int},
+    {"%d", printf_dec}
  };
 
  va_list args;

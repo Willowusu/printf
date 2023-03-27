@@ -30,5 +30,8 @@ int printf_string(va_list val);
 int _putchar(char c);
 int _printf(const char *format, ...);
 int _strlen(char *s);
+int printf_int(va_list args);
+int printf_dec(va_list args);
+
 
 #endif
