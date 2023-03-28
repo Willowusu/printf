@@ -30,5 +30,6 @@ int printf_hexa(va_list val);
 int printf_oct(va_list val);
 int printf_unsigned(va_list args);
 int printf_custom_conversion(va_list val);
-int printf_rot(va_list args)
+int printf_rot(va_list args);
+int printf_reverse(va_list args);
 #endif
