@@ -18,7 +18,8 @@ int _printf(const char *const format, ...)
         {"%o", printf_oct},
         {"%x", printf_hexa},
         {"%X", printf_HEX},
-        {"%S", printf_custom_conversion}};
+        {"%S", printf_custom_conversion},
+        {"%R", printf_rot13}};
 
     va_list args;
     int i = 0, len = 0, j = 0;
