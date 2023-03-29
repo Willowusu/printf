@@ -1,0 +1,8 @@
+# main.c
+.vscode/
+*.exe
+*.out
+printf
+main
+buff
+out
