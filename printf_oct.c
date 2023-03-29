@@ -7,7 +7,8 @@ int printf_oct(va_list val)
     /*Declare necessary variables.*/
     int i;
     int *array;
-    int counter = 0;
+    char buffer[1024];
+    int counter = 0, buffer_index = 0;
     unsigned int num = va_arg(val, unsigned int); /*Get the unsigned int from the va_list.*/
     unsigned int temp = num;
 
@@ -32,7 +33,15 @@ int printf_oct(va_list val)
     /*Print each digit in the array to stdout in reverse order.*/
     for (i = counter - 1; i >= 0; i--)
     {
-        _putchar(array[i] + '0');
+        buffer[buffer_index] = array[i] + '0';
+        buffer_index++;
+    }
+
+    if (buffer_index > 0)
+    {
+        buffer[buffer_index] = '\0';
+        _putchar(buffer);
+        buffer_index = 0;
     }
 
     /*Free the memory allocated for the array.*/

@@ -19,9 +19,10 @@ typedef struct format
 } format_specifier;
 
 int printf_string(va_list val);
+int printf_char(va_list val);
 int _putchar(char *c);
-int _printf(const char *format, ...);
-int _strlen(char *s);
+int _printf(const char *const format, ...);
+int _strlen(const char *s);
 int printf_int(va_list args);
 int _pow_recursion(int x, int y);
 int printf_binary(va_list val);
@@ -35,5 +36,6 @@ int printf_reverse(va_list args);
 int printf_pointer(va_list val);
 int printf_hexa_helper(unsigned long int num);
 int printf_HEX_helper(unsigned int num);
+char *_strncpy(char *dest, char *src, int n);
 
 #endif

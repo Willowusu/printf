@@ -7,6 +7,7 @@
  */
 int printf_rot(va_list args)
 {
+    char c;
     int i, j, counter = 0;
     int k = 0;
     char *s = va_arg(args, char *);
@@ -23,14 +24,16 @@ int printf_rot(va_list args)
         {
             if (s[i] == alpha[j])
             {
-                _putchar(beta[j]);
+                c = beta[j];
+                _putchar(&c);
                 counter++;
                 k = 1;
             }
         }
         if (!k)
         {
-            _putchar(s[i]);
+            c = s[i];
+            _putchar(&c);
             counter++;
         }
     }

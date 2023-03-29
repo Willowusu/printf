@@ -7,10 +7,11 @@ int printf_int(va_list args)
     int digit, ind_digi = n;
     /*These are to check for octal or hex so as not alter original variables*/
     int ind = 1, positive = n, position = 0;
+    char c;
 
     if (n == 0)
     {
-        _putchar('0');
+        _putchar("0");
     }
     else
     {
@@ -25,7 +26,7 @@ int printf_int(va_list args)
              * condition in the while loop, then we can remove this variable.
              */
             ind_digi = positive;
-            _putchar('-');
+            _putchar("-");
         }
 
         while ((ind_digi / 10) != 0)
@@ -38,7 +39,8 @@ int printf_int(va_list args)
         {
             digit = positive / ind;
 
-            _putchar(digit + '0');
+            c = digit + '0';
+            _putchar(&c);
             positive = (positive - (digit * ind));
             ind /= 10;
             position++;

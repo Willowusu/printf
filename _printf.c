@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
+#include <stdlib.h>
 
 /**
  * _printf - select correct function to print
@@ -9,8 +10,11 @@
 
 int _printf(const char *const format, ...)
 {
+    char c[1024];
+    int arr_size;
     format_specifier conversion_specifier[] = {
         {"%s", printf_string},
+        {"%c", printf_char},
         {"%i", printf_int},
         {"%d", printf_int},
         {"%b", printf_binary},
@@ -20,10 +24,12 @@ int _printf(const char *const format, ...)
         {"%X", printf_HEX},
         {"%S", printf_custom_conversion},
         {"%R", printf_rot},
-        {"%r", printf_reverse}};
+        {"%r", printf_reverse},
+        {"%p", printf_pointer}
+        };
 
     va_list args;
-    int i = 0, len = 0, j = 0;
+    int i = 0, len = 0, j = 0, buffer_index = 0;
 
     va_start(args, format);
 
@@ -54,10 +60,33 @@ int _printf(const char *const format, ...)
          * Everything else just prints characters to the screen till the null char
          * is encountered.
          */
-        if (format[i] == '%')
+        if (format[i] == '\n')
         {
+            if (buffer_index > 0)
+            {
+                c[buffer_index] = '\0';
+                _putchar(c);
+                len += buffer_index;
+                buffer_index = 0;
+            }
+            _putchar("\n");
+            len++;
             i++;
-            for (j = 0; j < sizeof(conversion_specifier); j++)
+        }
+        else if (format[i] == '%')
+        {
+            if (buffer_index > 0)
+            {
+                c[buffer_index] = '\0';
+                _putchar(c);
+                len += buffer_index;
+                buffer_index = 0;
+            }
+
+            i++;
+
+            arr_size = sizeof(conversion_specifier) / sizeof(conversion_specifier[0]);
+            for (j = 0; j < (arr_size); j++)
             {
                 if (format[i] == conversion_specifier[j].specifier[1])
                 {
@@ -68,7 +97,8 @@ int _printf(const char *const format, ...)
         }
         else
         {
-            _putchar(format[i]);
+            c[buffer_index] = format[i];
+            buffer_index++;
             len++;
             i++;
         }
