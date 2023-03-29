@@ -20,11 +20,11 @@ void my_putchar(char *c)
 }
 
 
-int main(void)
+/*int main(void)
 {
     char *a = "The quick brown fox jumps over the lazy dog The quick brown fox jumps over the lazy dog The quick brown fox jumps over the lazy dog The quick brown fox jumps over the lazy dog The quick brown fox jumps over the lazy dog The quick brown fox jumps over the lazy dog The quick brown fox jumps over the lazy dog\n";
 
     my_putchar(a);
 
     return (0);
-}
+}*/

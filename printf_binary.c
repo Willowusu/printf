@@ -18,29 +18,29 @@
  It also increments cont by 1 before
 */
 
-// This function takes a va_list containing a single unsigned int as an argument,
-// converts the unsigned int to a binary representation, and prints it to stdout.
+/*This function takes a va_list containing a single unsigned int as an argument*/
+/*converts the unsigned int to a binary representation, and prints it to stdout*/
 int printf_binary(va_list val)
 {
-    // Declare necessary variables.
+    /*Declare necessary variables.*/
     int flag = 0;
     int cont = 0;
     int i, a = 1, b;
     unsigned int num = va_arg(val, unsigned int);
     unsigned int p;
 
-    // Iterate over each bit in the unsigned int, starting from the leftmost bit.
+    /*Iterate over each bit in the unsigned int, starting from the leftmost bit.*/
     for (i = 0; i < 32; i++)
     {
-        // Shift the number a left by (31-i) bits, then bitwise AND it with the unsigned int.
+        /*Shift the number a left by (31-i) bits, then bitwise AND it with the unsigned int.*/
         p = ((a << (31 - i)) & num);
         
-        // If the result of the bitwise AND operation is non-zero, set the 'flag' variable to 1.
+        /*If the result of the bitwise AND operation is non-zero, set the 'flag' variable to 1.*/
         if (p >> (31 - i))
             flag = 1;
         
-        // If the 'flag' variable is set, calculate the value of the current bit in the binary representation
-        // and print it to stdout. Increment the 'cont' variable to keep track of the number of bits printed.
+        /*If the 'flag' variable is set, calculate the value of the current bit in the binary representation*/
+        /*and print it to stdout. Increment the 'cont' variable to keep track of the number of bits printed.*/
         if (flag)
         {
             b = p >> (31 - i);
@@ -49,13 +49,13 @@ int printf_binary(va_list val)
         }
     }
 
-    // If no bits were printed, print a '0' bit to stdout and increment the 'cont' variable.
+    /*If no bits were printed, print a '0' bit to stdout and increment the 'cont' variable.*/
     if (cont == 0)
     {
         cont++;
         _putchar('0');
     }
 
-    // Return the number of bits printed to stdout.
+    /*Return the number of bits printed to stdout.*/
     return (cont);
 }

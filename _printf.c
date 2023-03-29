@@ -57,7 +57,7 @@ int _printf(const char *const format, ...)
         if (format[i] == '%')
         {
             i++;
-            for (j = 0; j < 3; j++)
+            for (j = 0; j < sizeof(conversion_specifier); j++)
             {
                 if (format[i] == conversion_specifier[j].specifier[1])
                 {
