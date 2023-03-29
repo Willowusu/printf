@@ -7,7 +7,19 @@
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int _putchar(char c)
+int _putchar(char *c)
 {
-	return (write(1, &c, 1));
+	int len = strlen(c);
+	int i = 0, num_bytes = 0;
+
+	char buffer[1024];
+
+	while (i < len)
+	{
+		num_bytes = len - i < 1024 ? len - i : 1024;
+		strncpy(buffer + i, &c[i], num_bytes);
+		write(1, buffer, num_bytes);
+		i += num_bytes;
+	}
+	return (0);
 }

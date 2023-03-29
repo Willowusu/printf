@@ -1,6 +1,5 @@
 #include "main.h"
 
-
 /*
 The code starts by declaring a variable called array.
  This is an int pointer to the memory location of an array of integers.

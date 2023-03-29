@@ -34,11 +34,11 @@ int printf_binary(va_list val)
     {
         /*Shift the number a left by (31-i) bits, then bitwise AND it with the unsigned int.*/
         p = ((a << (31 - i)) & num);
-        
+
         /*If the result of the bitwise AND operation is non-zero, set the 'flag' variable to 1.*/
         if (p >> (31 - i))
             flag = 1;
-        
+
         /*If the 'flag' variable is set, calculate the value of the current bit in the binary representation*/
         /*and print it to stdout. Increment the 'cont' variable to keep track of the number of bits printed.*/
         if (flag)

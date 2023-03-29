@@ -19,7 +19,7 @@ int _printf(const char *const format, ...)
         {"%x", printf_hexa},
         {"%X", printf_HEX},
         {"%S", printf_custom_conversion},
-        {"%R", printf_rot13},
+        {"%R", printf_rot},
         {"%r", printf_reverse}};
 
     va_list args;

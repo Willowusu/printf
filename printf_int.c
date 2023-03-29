@@ -23,7 +23,7 @@ int printf_int(va_list args)
              * We end up having issues with the negative ad positive numbers
              * so this was my solution. If you have a better way of fixing the
              * condition in the while loop, then we can remove this variable.
-            */
+             */
             ind_digi = positive;
             _putchar('-');
         }
@@ -34,22 +34,9 @@ int printf_int(va_list args)
             ind_digi /= 10;
         }
 
-
         while (ind >= 1)
         {
             digit = positive / ind;
-
-            /**
-             * Check if the first digit is 0,
-             * the position variable acts as a counter of sorts,
-             * now, the only way the function continues into this conditional
-             * statement is if and only if the digit and position are 0.
-             * Now, for numbers that may have a zero in between, this might be
-             * a problem, so the counter, position, is placed outside the if
-             * statement and incremented so that the condition always evaluates
-             * to False.
-             */
-            
 
             _putchar(digit + '0');
             positive = (positive - (digit * ind));

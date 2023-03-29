@@ -19,7 +19,7 @@ typedef struct format
 } format_specifier;
 
 int printf_string(va_list val);
-int _putchar(char c);
+int _putchar(char *c);
 int _printf(const char *format, ...);
 int _strlen(char *s);
 int printf_int(va_list args);
@@ -32,5 +32,8 @@ int printf_unsigned(va_list args);
 int printf_custom_conversion(va_list val);
 int printf_rot(va_list args);
 int printf_reverse(va_list args);
-int printf_custom_conversion(char *s);
+int printf_pointer(va_list val);
+int printf_hexa_helper(unsigned long int num);
+int printf_HEX_helper(unsigned int num);
+
 #endif
