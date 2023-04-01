@@ -1,11 +1,12 @@
-#include <stdlib.h>
 #include "main.h"
+#include <stdlib.h>
 
 int printf_HEX_helper(unsigned int num)
 {
     int i;
+    char buffer[1024];
     int *array;
-    int counter = 0;
+    int counter = 0, buffer_index = 0;
     unsigned int temp = num;
 
     while (num / 16 != 0)
@@ -25,8 +26,19 @@ int printf_HEX_helper(unsigned int num)
     {
         if (array[i] > 9)
             array[i] = array[i] + 7;
-        _putchar(array[i] + '0');
+        /*c = array[i] + '0';*/
+        buffer[buffer_index] = array[i] + '0';
+        buffer_index++;
+        /*_putchar(&c);*/
     }
+
+    if (buffer_index > 0)
+    {
+        buffer[buffer_index] = '\0';
+        _putchar(buffer);
+        buffer_index = 0;
+    }
+
     free(array);
     return (counter);
 }
@@ -35,7 +47,8 @@ int printf_hexa_helper(unsigned long int num)
 {
     long int i;
     long int *array; /*pointer to array*/
-    long int counter = 0;
+    char buffer[1024];
+    long int counter = 0, buffer_index = 0;
     unsigned long int temp = num;
 
     /*count the number of digits needed to represent the hexadecimal number*/
@@ -61,10 +74,20 @@ int printf_hexa_helper(unsigned long int num)
     {
         if (array[i] > 9)
             array[i] = array[i] + 39; /*convert to letter representation (A-F)*/
-        _putchar(array[i] + '0');     /*output the digit*/
+        /*c = array[i] + '0';*/
+        buffer[buffer_index] = array[i] + '0';
+        buffer_index++;
+        /*_putchar(&c); output the digit*/
     }
 
     /*free the dynamically allocated array*/
+    if (buffer_index > 0)
+    {
+        buffer[buffer_index] = '\0';
+        _putchar(buffer);
+        buffer_index = 0;
+    }
+
     free(array);
 
     return (counter); /*return the number of digits outputted*/
@@ -72,26 +95,52 @@ int printf_hexa_helper(unsigned long int num)
 
 int printf_pointer(va_list val) /*Added integer argument and void* pointer argument*/
 {
+    char buffer[1024];
     void *p;
     char *s = "(nil)";
     long int a;
     int b;
     int i;
+    int buffer_index = 0;
+
     p = va_arg(val, void *);
 
+    printf("Enter here?");
     if (p == NULL)
     {
         for (i = 0; s[i] != '\0'; i++)
         {
-            _putchar(s[i]);
+            /*c = s[i];*/
+            buffer[buffer_index] = s[i];
+            buffer_index++;
+            /*_putchar(&c);*/
         }
+
+        if (buffer_index > 0)
+        {
+            buffer[buffer_index] = '\0';
+            _putchar(buffer);
+            buffer_index = 0;
+        }
+
         return (i);
     }
 
     a = (unsigned long int)p;
-    _putchar('0');
-    _putchar('x');
+
+    buffer[buffer_index] = '0';
+    buffer_index++;
+    buffer[buffer_index] = 'x';
+    buffer_index++;
+
+    if (buffer_index > 0)
+    {
+        buffer[buffer_index] = '\0';
+        _putchar(buffer);
+        buffer_index = 0;
+    }
+    /*_putchar("0");*/
+    /*_putchar("x");*/
     b = printf_hexa_helper(a);
-    _putchar('\n');
     return (b + 2);
 }

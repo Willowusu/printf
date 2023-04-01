@@ -8,8 +8,9 @@ int printf_custom_conversion(va_list val)
 {
     /*Declare necessary variables.*/
     char *s;
-    int i, len = 0;
     int cast;
+    char buffer[1024];
+    int i, len = 0, buffer_index = 0;
 
     /*Extract the char* string from the va_list argument.*/
     s = va_arg(val, char *);
@@ -25,8 +26,14 @@ int printf_custom_conversion(va_list val)
         if (s[i] < 32 || s[i] >= 127)
         {
             /*Print the escape characters '\x'.*/
-            _putchar('\\');
-            _putchar('x');
+            /*c = '\\';*/
+            buffer[buffer_index] = '\\';
+            buffer_index++;
+            /*_putchar(&c);*/
+            buffer[buffer_index] = 'x';
+            buffer_index++;
+            
+            /*_putchar("x");*/
             len = len + 2;
 
             /*Convert the character to an integer using an intermediate cast operation.*/
@@ -35,7 +42,15 @@ int printf_custom_conversion(va_list val)
             /*If the hexadecimal representation of the character is only one digit, print a leading '0'.*/
             if (cast < 16)
             {
-                _putchar('0');
+                buffer[buffer_index] = '0';
+                buffer_index++;
+                /*_putchar("0");*/
+                if (buffer_index > 0)
+                {
+                    buffer[buffer_index] = '\0';
+                    _putchar(buffer);
+                    buffer_index = 0;
+                }
                 len++;
             }
 
@@ -45,9 +60,19 @@ int printf_custom_conversion(va_list val)
         /*If the character is a printable ASCII character, print it as-is.*/
         else
         {
-            _putchar(s[i]);
+            /*c = s[i];*/
+            buffer[buffer_index] = s[i];
+            buffer_index++;
+            /*_putchar(&c);*/
             len++;
         }
+    }
+
+    if (buffer_index > 0)
+    {
+        buffer[buffer_index] = '\0';
+        _putchar(buffer);
+        buffer_index = 0;
     }
 
     /*Return the number of characters printed to stdout.*/

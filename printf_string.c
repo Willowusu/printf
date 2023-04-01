@@ -3,7 +3,7 @@
 int printf_string(va_list val)
 {
     char *s;
-    int i, len;
+    int len;
 
     s = va_arg(val, char *);
 
@@ -14,17 +14,15 @@ int printf_string(va_list val)
      */
     if (s == NULL)
     {
-        s = "null";
+        s = "(null)";
         len = _strlen(s);
-        for (i = 0; i < len; i++)
-            _putchar(s[i]);
+        _putchar(s);
         return (len);
     }
     else
     {
         len = _strlen(s);
-        for (i = 0; i < len; i++)
-            _putchar(s[i]);
+        _putchar(s);
         return (len);
     }
 }

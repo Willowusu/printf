@@ -28,6 +28,7 @@ int printf_binary(va_list val)
     int i, a = 1, b;
     unsigned int num = va_arg(val, unsigned int);
     unsigned int p;
+    char c;
 
     /*Iterate over each bit in the unsigned int, starting from the leftmost bit.*/
     for (i = 0; i < 32; i++)
@@ -44,7 +45,8 @@ int printf_binary(va_list val)
         if (flag)
         {
             b = p >> (31 - i);
-            _putchar(b + 48);
+            c = b + 48;
+            _putchar(&c);
             cont++;
         }
     }
@@ -53,7 +55,7 @@ int printf_binary(va_list val)
     if (cont == 0)
     {
         cont++;
-        _putchar('0');
+        _putchar("0");
     }
 
     /*Return the number of bits printed to stdout.*/

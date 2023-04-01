@@ -24,6 +24,7 @@ int printf_hexa(va_list val)
 	int counter = 0;
 	unsigned int num = va_arg(val, unsigned int);
 	unsigned int temp = num;
+	char c;
 
 	while (num / 16 != 0)
 	{
@@ -42,7 +43,8 @@ int printf_hexa(va_list val)
 	{
 		if (array[i] > 9)
 			array[i] = array[i] + 39;
-		_putchar(array[i] + '0');
+		c = array[i] + '0';
+		_putchar(&c);
 	}
 	free(array);
 	return (counter);
